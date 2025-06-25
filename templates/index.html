@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Room Occupancy</title>
+    <script>
+        function fetchOccupancy() {
+            fetch('/get_occupancy')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerText =
+                        `Estimated People: ${data.people} (at ${data.timestamp})`;
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Room Occupancy Estimation</h1>
+    <button onclick="fetchOccupancy()">Get Latest Estimate</button>
+    <p id="result">Click the button to see occupancy.</p>
+</body>
+</html>
